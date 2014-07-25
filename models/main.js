@@ -4,9 +4,9 @@ var Models = {};
 
 Models.Person = Person;
 
-var noob = {firstname: "Mala", lastname: "Kalla"};
-Models.Person.create(noob, function(err, person){
-});
+// var noob = {firstname: "Mala", lastname: "Kalla"};
+// Models.Person.create(noob, function(err, person){
+// });
 
 Models.Person.all(function(err, people){
   // logs all database elements

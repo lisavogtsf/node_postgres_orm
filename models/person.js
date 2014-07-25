@@ -14,6 +14,7 @@ Person.all = function(callback){
     res.rows.forEach(function(foo){
       allPeople.push(foo);
     });
+    console.log("Running Person.all");
 
     callback(err, allPeople);
   });
@@ -35,6 +36,7 @@ Person.create = function(params, callback){
     [params.firstname, params.lastname], 
     function(err, res){
       // console.log(res);
+      console.log("Running Person.create");
       var createdRow, newPerson;
       callback(err, newPerson);
     });
@@ -73,9 +75,20 @@ Person.prototype.update = function(params, callback) {
 }
 
 Person.prototype.destroy = function(){
-  db.query("", [this.id], function(err, res) {
+  // first set up my SQL statement
+  var statement = "";
+  var values = "";
+  console.log("Deleting:");
+  console.log(statement, "with values", values);
+
+
+  db.query(statement, [this.id], function(err, res) {
     callback(err)
   });
 }
 
 module.exports = Person;
+
+
+
+
