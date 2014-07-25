@@ -4,7 +4,13 @@ var Models = {};
 
 Models.Person = Person;
 
+var tim = {firstname: "Tim", lastname: "Licata"};
+Models.Person.create(tim, function(err, person){
+  console.log("add instructor to db");
+});
+
 Models.Person.all(function(err, people){
+  // logs empty array []
   console.log(people);
 });
 

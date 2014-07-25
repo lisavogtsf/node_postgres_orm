@@ -8,9 +8,16 @@ function Person(params) {
 
 
 Person.all = function(callback){
-  db.query("YOUR QUERY HERE",[], function(err, res){
+  db.query("SELECT * FROM people RETURNING",[], function(err, res){
     var allPeople = [];
+
+    // returns undefined
+    // console.log(res);
+
     // do something here with res
+    // return all people in the database
+    // in an array of js objects
+
     callback(err, allPeople);
   });
 }
@@ -19,6 +26,7 @@ Person.findBy = function(key, val, callback) {
   db.query("",[val], function(err, res){
     var foundRow, foundPerson;
     // do something here with res
+    // find a book using 
     callback(err, foundPerson);
   });
 };
@@ -26,10 +34,12 @@ Person.findBy = function(key, val, callback) {
 
 
 Person.create = function(params, callback){
-  db.query("", [params.firstname, params.lastname], function(err, res){
-    var createdRow, newPerson;
-    callback(err, newPerson);
-  });
+  db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2);',
+    [params.firstname, params.lastname], 
+    function(err, res){
+      var createdRow, newPerson;
+      callback(err, newPerson);
+    });
 };
 
 Person.prototype.update = function(params, callback) {
