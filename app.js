@@ -12,7 +12,6 @@ app.use(bodyParser.urlencoded());
 app.use(methodOverride("_method"));
 
 
-
 // corresponds to Person.all?
 app.get("/people", function(req, res){
   Person.all(function(err, allPeople){

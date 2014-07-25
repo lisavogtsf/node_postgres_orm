@@ -10,6 +10,8 @@ db.config = {
 
 db.connect = function(callback) {
   pg.connect(this.config, callback);
+  // if problems remove line below
+  pg.end();
 }
 
 db.query = function(statement, params, callback) {

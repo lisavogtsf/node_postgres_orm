@@ -44,10 +44,8 @@ Person.create = function(params, callback){
   db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2);',
     [params.firstname, params.lastname], 
     function(err, res){
-      console.log("Running Person.create");
-
+      // console.log("Running Person.create");
       var createdRow, newPerson;
- 
       Person.findBy('firstname', params.firstname, function(err, newPerson){
         // console.log(newPerson);
         

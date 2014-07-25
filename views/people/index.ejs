@@ -5,9 +5,12 @@
   </head>
   <body>
     People Index
-
-    <!-- show all people in database-->
-    <!-- people.forEach(show people) -->
-
+    <ul>
+      <!-- show all people in database-->
+      <!-- people.forEach(show people) -->
+      <% people.forEach(function(person){ %>
+      <li><%= person.firstname  %></li>
+      <% }) %>
+    </ul>
   </body>
 </html>
