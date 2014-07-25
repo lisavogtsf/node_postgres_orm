@@ -37,6 +37,7 @@ Person.create = function(params, callback){
   db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2);',
     [params.firstname, params.lastname], 
     function(err, res){
+      // console.log(res);
       var createdRow, newPerson;
       callback(err, newPerson);
     });
