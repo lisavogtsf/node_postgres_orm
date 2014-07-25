@@ -20,14 +20,15 @@ Person.all = function(callback){
   });
 }
 
+
 Person.findBy = function(key, val, callback) {
-  db.query("",[val], function(err, res){
+  db.query("WHERE " + key + "=$1",[val], function(err, res){
     var foundRow, foundPerson;
     // do something here with res
     // find a book using 
     callback(err, foundPerson);
   });
-};
+};'
 
 
 
@@ -42,6 +43,9 @@ Person.create = function(params, callback){
     });
 };
 
+
+// I don't know how to properly pass in 
+// parameters for update
 Person.prototype.update = function(params, callback) {
   var colNames = [];
   var colVals = [];
@@ -75,12 +79,24 @@ Person.prototype.update = function(params, callback) {
 }
 
 Person.prototype.destroy = function(){
-  // first set up my SQL statement
-  var statement = "";
-  var values = "";
+  // pasted in from update function
+  var colNames = [];
+  var colVals = [];
+  var count = 2;
+
+  for(var key in this) {
+    if(this.hasOwnProperty(key) && params[key] !== undefined){
+      var colName = key + "=$" + count;
+      colNames.push(colName);
+      colVals.push(params[key]);
+      count++;
+    }
+  }
+  // pasted in from update function and altered
+  var statement = "DELETE FROM people WHERE " + colNames.join(", ") + " id=$1";
+  var values = [this.id].concat(colVals);
   console.log("Deleting:");
   console.log(statement, "with values", values);
-
 
   db.query(statement, [this.id], function(err, res) {
     callback(err)

@@ -10,8 +10,13 @@ Models.Person = Person;
 
 Models.Person.all(function(err, people){
   // logs all database elements
-  // console.log(people);
+  console.log(people);
 });
+
+Person.prototype.update = function(params, callback){ id: 32,
+    firstname: 'Lala Lala',
+    lastname: 'Walla Walla',
+    created_at: Thu Jul 24 2014 19:38:54 GMT-0700 (PDT) };
 
 // Models.Person.findBy("id", 1, function(err, person){
 //   console.log("found", person);
