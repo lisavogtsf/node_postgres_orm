@@ -33,11 +33,11 @@ Person.findBy = function(key, val, callback) {
   // console.log("query is: WHERE " + key + "=$1",[val]);
 
   db.query("SELECT * FROM people WHERE " + key + "=$1",[val], function(err, res){
-    console.log(res.rows);
+    // console.log(res.rows);
     var foundRow, foundPerson;
     foundRow = res.rows[0];
     foundPerson = new Person(foundRow);
-    console.log(foundPerson);
+    // console.log(foundPerson);
     // do something here with res
     // console.log(res.rows);
     callback(err, foundPerson);
