@@ -4,9 +4,11 @@ var Models = {};
 
 Models.Person = Person;
 
-// var noob = {firstname: "Mala", lastname: "Kalla"};
-// Models.Person.create(noob, function(err, person){
-// });
+var noob = {firstname: "Windsay", lastname: "Wohan"};
+Models.Person.create(noob, function(err, noobPerson){
+console.log(noobPerson);
+});
+
 
 // working all function
 // Models.Person.all(function(err, people){
@@ -15,10 +17,10 @@ Models.Person = Person;
 // });
 
 // non-functioning findBy
-Models.Person.findBy('firstname', 'Mary', function(err, foundPerson){
-  console.log("Found: ", foundPerson);
-  // console.log("query is: WHERE " + key + "=$1",[val]);
-});
+// Models.Person.findBy('firstname', 'Mary', function(err, foundPerson){
+//   console.log("Found: ", foundPerson);
+//   // console.log("query is: WHERE " + key + "=$1",[val]);
+// });
 
 
 

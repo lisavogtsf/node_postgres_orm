@@ -37,15 +37,22 @@ Person.findBy = function(key, val, callback) {
 };
 
 
-
+// Person.create db query works
+// takes an object with first and last name as parameters
+// newPerson object has id = undefined
 Person.create = function(params, callback){
   db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2);',
     [params.firstname, params.lastname], 
     function(err, res){
-      // console.log(res);
       console.log("Running Person.create");
+
       var createdRow, newPerson;
-      callback(err, newPerson);
+ 
+      Person.findBy('firstname', params.firstname, function(err, newPerson){
+        // console.log(newPerson);
+        
+        callback(err, newPerson);            
+      });
     });
 };
 
