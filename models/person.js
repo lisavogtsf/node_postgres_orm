@@ -8,15 +8,12 @@ function Person(params) {
 
 
 Person.all = function(callback){
-  db.query("SELECT * FROM people RETURNING",[], function(err, res){
+  db.query("SELECT * FROM people ",[], function(err, res){
     var allPeople = [];
 
-    // returns undefined
-    // console.log(res);
-
-    // do something here with res
-    // return all people in the database
-    // in an array of js objects
+    res.rows.forEach(function(foo){
+      allPeople.push(foo);
+    });
 
     callback(err, allPeople);
   });

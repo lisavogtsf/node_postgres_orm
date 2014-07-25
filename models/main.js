@@ -4,13 +4,13 @@ var Models = {};
 
 Models.Person = Person;
 
-var noob = {firstname: "Nim", lastname: "Wicata"};
+var noob = {firstname: "Mala", lastname: "Kalla"};
 Models.Person.create(noob, function(err, person){
 });
 
 Models.Person.all(function(err, people){
-  // logs empty array []
-  console.log(people);
+  // logs all database elements
+  // console.log(people);
 });
 
 // Models.Person.findBy("id", 1, function(err, person){
