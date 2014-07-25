@@ -24,22 +24,14 @@ Person.all = function(callback){
 }
 
 
-// shield sql
-// with values like this $1, $2... and ['value1', 'value2']
-// so code in form submits can't inject sql
-// db.query("INSERT INTO books (title, author) VALUES ($1, $2) RETURNING *", ["The Great Gatsby", "Fitzgerald"])
+// Working findBy function
 Person.findBy = function(key, val, callback) {
-  // key is column name, val is what you are looking for in that column
-  // console.log("query is: WHERE " + key + "=$1",[val]);
 
   db.query("SELECT * FROM people WHERE " + key + "=$1",[val], function(err, res){
-    // console.log(res.rows);
     var foundRow, foundPerson;
     foundRow = res.rows[0];
     foundPerson = new Person(foundRow);
-    // console.log(foundPerson);
-    // do something here with res
-    // console.log(res.rows);
+
     callback(err, foundPerson);
   });
 };
