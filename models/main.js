@@ -4,7 +4,7 @@ var Models = {};
 
 Models.Person = Person;
 
-var noob = {firstname: "Sim", lastname: "Bicata"};
+var noob = {firstname: "Nim", lastname: "Wicata"};
 Models.Person.create(noob, function(err, person){
 });
 
