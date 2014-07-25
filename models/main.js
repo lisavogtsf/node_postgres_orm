@@ -13,10 +13,6 @@ Models.Person.all(function(err, people){
   console.log(people);
 });
 
-Person.prototype.update = function(params, callback){ id: 32,
-    firstname: 'Lala Lala',
-    lastname: 'Walla Walla',
-    created_at: Thu Jul 24 2014 19:38:54 GMT-0700 (PDT) };
 
 // Models.Person.findBy("id", 1, function(err, person){
 //   console.log("found", person);
@@ -24,5 +20,17 @@ Person.prototype.update = function(params, callback){ id: 32,
 //     console.log("UPDATED:", person)
 //   });
 // })
+
+// non-functioning findBy
+// Models.Person.findBy("firstname", 'Slim', function(err, person){
+//   console.log("Found: ", person);
+// });
+
+// Person.prototype.update = function(params, callback){ id: 32,
+//     firstname: 'Lala Lala',
+//     lastname: 'Walla Walla',
+//     created_at: Thu Jul 24 2014 19:38:54 GMT-0700 (PDT) };
+
+
 
 module.exports = Models;

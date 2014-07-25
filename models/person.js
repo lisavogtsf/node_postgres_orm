@@ -11,24 +11,28 @@ Person.all = function(callback){
   db.query("SELECT * FROM people ",[], function(err, res){
     var allPeople = [];
 
-    res.rows.forEach(function(foo){
-      allPeople.push(foo);
-    });
-    console.log("Running Person.all");
-
+    if(err){
+      console.log("error!");
+    } else {
+      res.rows.forEach(function(paramsFoo){
+        allPeople.push(new Person(paramsFoo));
+      });
+      console.log("Running Person.all");
+    }
     callback(err, allPeople);
   });
 }
 
-
 Person.findBy = function(key, val, callback) {
-  db.query("WHERE " + key + "=$1",[val], function(err, res){
+  // key is column name, val is what you are looking for in that column
+  console.log("query is: WHERE " + key + "=$1",[val]);
+  db.query("WHERE " + key + "=$1 VALUES",[val], function(err, res){
     var foundRow, foundPerson;
     // do something here with res
     // find a book using 
     callback(err, foundPerson);
   });
-};'
+};
 
 
 
