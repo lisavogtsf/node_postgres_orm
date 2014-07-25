@@ -8,23 +8,30 @@ Models.Person = Person;
 // Models.Person.create(noob, function(err, person){
 // });
 
-Models.Person.all(function(err, people){
-  // logs all database elements
-  console.log(people);
+// working all function
+// Models.Person.all(function(err, people){
+//   // logs all database elements
+//   console.log(people);
+// });
+
+// non-functioning findBy
+Models.Person.findBy('firstname', 'Mary', function(err, foundPerson){
+  console.log("Found: ", foundPerson);
+  // console.log("query is: WHERE " + key + "=$1",[val]);
 });
 
 
-// Models.Person.findBy("id", 1, function(err, person){
+
+
+// findby and update
+// Models.Person.findBy("id", 32, function(err, person){
 //   console.log("found", person);
 //   person.update({firstname: "sam", lastname: "creek"}, function(err, person){
 //     console.log("UPDATED:", person)
 //   });
 // })
 
-// non-functioning findBy
-// Models.Person.findBy("firstname", 'Slim', function(err, person){
-//   console.log("Found: ", person);
-// });
+
 
 // Person.prototype.update = function(params, callback){ id: 32,
 //     firstname: 'Lala Lala',

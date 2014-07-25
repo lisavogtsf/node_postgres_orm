@@ -13,14 +13,18 @@ app.use(methodOverride("_method"));
 
 
 
-
+// corresponds to Person.all?
 app.get("/people", function(req, res){
-  res.render("people/index", {people: []})
+  Person.all(function(err, allPeople){
+  res.render("people/index", {people: allPeople})
+  })
 });
 
+// corresponds to Person.create?
 app.get("/people/new", function(req, res){
   res.render("people/new")
 });
+
 
 app.get("/people/:id", function(req,res){
   res.render("people/show", {person: {} });
