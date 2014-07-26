@@ -89,10 +89,10 @@ Person.prototype.update = function(params, callback) {
 }
 
 Person.prototype.destroy = function(callback){
-  console.log("Starting destroy function..........");
+  // console.log("Starting destroy function..........");
   db.query("DELETE FROM people WHERE id =$1;", [this.id], function(err, res) {
-    console.log("err: ", err);
-    console.log("res: ", res);
+    // console.log("err: ", err);
+    // console.log("res: ", res);
     callback(err);
   });
 }
