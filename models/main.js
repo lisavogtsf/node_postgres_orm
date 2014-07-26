@@ -4,6 +4,34 @@ var Models = {};
 
 Models.Person = Person;
 
+
+
+// // destroy tests
+// var terry = {firstname: 'Terry', lastname: 'Vogt'};
+
+// Models.Person.create(terry, function(err, tv){
+//   console.log("create TV", tv);
+//   tv.destroy();
+//   console.log("destroyed? ", tv);
+// });
+
+
+
+// destroy tests
+// use find to feed in a person
+
+Models.Person.findBy("id", 57, function(err, person){
+  console.log("found for destruction", person);
+
+  person.destroy(function(err, res){
+    console.log("DELETED:", person)
+  });
+})
+
+
+
+
+
 // // create function--working
 // var noob = {firstname: "Windsay", lastname: "Wohan"};
 // Models.Person.create(noob, function(err, noobPerson){
@@ -17,15 +45,12 @@ Models.Person = Person;
 //   console.log(people);
 // });
 
-// // findBy function--working
-// Models.Person.findBy('firstname', 'Blim', function(err, foundPerson){
-//   console.log("Found: ", foundPerson);
-// });
+// 
 
-// update function--working
-// findby and update
-// find passes a foundPerson object into update
-// then update sets 
+// // update function--working
+// // findby and update
+// // find passes a foundPerson object into update
+// // then update sets 
 // Models.Person.findBy("id", 4, function(err, person){
 //   console.log("found", person);
 //   person.update({firstname: "Sam", lastname: "Spade"}, function(err, person){
