@@ -9,7 +9,7 @@
       <!-- show all people in database-->
       <!-- people.forEach(show people) -->
       <% people.forEach(function(person){ %>
-      <li><%= person.firstname  %></li>
+      <li><%= person.id + "). " + person.firstname + " " + person.lastname %></li>
       <% }) %>
     </ul>
   </body>
