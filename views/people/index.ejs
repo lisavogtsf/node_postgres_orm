@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>People Index</title>
+    <!--css doesn't seem to be working -->
+    <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
     People Index
@@ -9,7 +11,7 @@
       <!-- show all people in database-->
       <!-- people.forEach(show people) -->
       <% people.forEach(function(person){ %>
-      <li><%= person.id + "). " + person.firstname + " " + person.lastname %></li>
+      <li><a href="people/<%=person.id%>"> <%= person.id + "). " + person.firstname + " " + person.lastname %></a></li>
       <% }) %>
     </ul>
   </body>
