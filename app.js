@@ -12,37 +12,47 @@ app.use(bodyParser.urlencoded());
 app.use(methodOverride("_method"));
 
 
-// corresponds to Person.all?
+// corresponds to Person.all, uses index.ejs
 app.get("/people", function(req, res){
   Person.all(function(err, allPeople){
   res.render("people/index", {people: allPeople})
   })
 });
 
-// corresponds to Person.create?
+// Sort of corresponds to Person.create, 
+// uses new.ejs to display form for adding
+// someone to the database
 app.get("/people/new", function(req, res){
   res.render("people/new")
 });
 
-
+// corresponds to Person.findBy, uses show.ejs
 app.get("/people/:id", function(req,res){
   res.render("people/show", {person: {} });
 });
 
+// Sort of corresponds to Person.prototype.update
+// uses edit.ejs, it shows the page where you
+// can make changes, but it doesn't make the changs
 app.get("/people/:id/edit", function(req,res){
   res.render("people/edit", {person: {} });
 });
 
-
-
+// corresponds to People.create, uses new.ejs
+// this is the action of creating someone new
 app.post("/people", function(req, res){
   res.redirect("/people")
 });
 
+// corresponds to Person.prototype.delete
+// probably uses edit.ejs
 app.delete("/people/:id", function(req, res){
   res.redirect("/people");
 });
 
+// correponds to Person.prototype.update
+// uses index.ejs after it updates the 
+// database using form data from edit.ejs
 app.put("/people/:id", function(req,res){
   res.redirect("/people");
 })
