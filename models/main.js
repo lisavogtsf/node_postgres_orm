@@ -4,32 +4,7 @@ var Models = {};
 
 Models.Person = Person;
 
-
-
-// // destroy tests
-// var terry = {firstname: 'Terry', lastname: 'Vogt'};
-
-// Models.Person.create(terry, function(err, tv){
-//   console.log("create TV", tv);
-//   tv.destroy();
-//   console.log("destroyed? ", tv);
-// });
-
-
-
-// destroy tests
-// use find to feed in a person
-
-Models.Person.findBy("id", 57, function(err, person){
-  console.log("found for destruction", person);
-
-  person.destroy(function(err, res){
-    console.log("DELETED:", person)
-  });
-})
-
-
-
+// test files for person.js SQL methods
 
 
 // // create function--working
@@ -45,31 +20,27 @@ Models.Person.findBy("id", 57, function(err, person){
 //   console.log(people);
 // });
 
-// 
 
 // // update function--working
 // // findby and update
-// // find passes a foundPerson object into update
+// // findBy passes a foundPerson object into update
 // // then update sets 
-// Models.Person.findBy("id", 4, function(err, person){
-//   console.log("found", person);
-//   person.update({firstname: "Sam", lastname: "Spade"}, function(err, person){
-//     console.log("UPDATED:", person)
+// Models.Person.findBy("id", 45, function(err, person){
+//   // console.log("found", person);
+//   person.update({firstname: "Sean", lastname: "Grey"}, function(err, person){
+//     // console.log("UPDATED:", person)
 //   });
 // })
 
-// // destroy function--not working
-// // original function
-// Person.prototype.destroy = function(){
-//   db.query("", [this.id], function(err, res) {
-//     callback(err)
+
+// destroy function -- working
+// use find to feed in a person
+
+// Models.Person.findBy("id", 57, function(err, person){
+//   console.log("found for destruction", person);
+//   person.destroy(function(err, res){
+//     console.log("DELETED:", person)
 //   });
-// }
-
-
-
-
-
-
+// })
 
 module.exports = Models;
