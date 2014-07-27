@@ -28,10 +28,18 @@ app.get("/people/new", function(req, res){
 });
 
 // corresponds to Person.findBy, uses show.ejs
+// trouble with error handling when I look for 
+// a non-existant id
 app.get("/people/:id", function(req,res){
   var personId = req.params.id;
-  Person.findBy("id", personId, function(err, person){
-    res.render("people/show", {person: foundPerson });
+
+  Person.findBy('id', personId, function(err, person){
+    if(err) {
+      console.error("Error!", err);
+    } else {
+      res.render("people/show", {person: person});
+    }
+
   });
 });
 

@@ -1,9 +1,16 @@
 var db = require('./db');
 
 function Person(params) {
-  this.firstname = params.firstname;
-  this.lastname = params.lastname;
-  this.id = params.id;
+  if(params){
+    this.firstname = params.firstname;
+    this.lastname = params.lastname;
+    this.id = params.id;
+  } else {
+    console.log("error making a new Person");
+    this.id =  "not in database"; 
+    this.firstname = "ERROR! ";
+    this.lastname = "Please try another ID."
+  }
 };
 
 // Person.all function--working
@@ -43,11 +50,14 @@ Person.all = function(callback){
 Person.findBy = function(key, val, callback) {
 
   db.query("SELECT * FROM people WHERE " + key + "=$1",[val], function(err, res){
-    var foundRow, foundPerson;
-    foundRow = res.rows[0];
-    foundPerson = new Person(foundRow);
-    console.log("Running Person.findBy");
-
+    if (err){
+      console.error("Error in findBy!", err);
+    } else {
+      var foundRow, foundPerson;
+      foundRow = res.rows[0];
+      foundPerson = new Person(foundRow);
+      console.log("Running Person.findBy");
+    }
     callback(err, foundPerson);
   });
 };
