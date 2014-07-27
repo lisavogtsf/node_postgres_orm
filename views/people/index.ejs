@@ -13,7 +13,7 @@
 
     <ul>
       <% people.forEach(function(person){ %>
-      <li><a href="people/<%=person.id%>"> <%= person.id + "). " + person.firstname + " " + person.lastname %></a></li>
+      <li><%= person.id + "). " %> <a href="people/<%=person.id%>"> <%= person.firstname + " " + person.lastname %> </a></li>
       <% }) %>
     </ul>
   </body>
