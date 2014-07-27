@@ -6,10 +6,12 @@
     <link rel="stylesheet" type="text/css" href="style/style.css">
   </head>
   <body>
-    People Index
+    <h1>People Index</h1>
+    <ul class="nav">
+      <li><a href="people/new">Add new person</a></li>
+    </ul>
+
     <ul>
-      <!-- show all people in database-->
-      <!-- people.forEach(show people) -->
       <% people.forEach(function(person){ %>
       <li><a href="people/<%=person.id%>"> <%= person.id + "). " + person.firstname + " " + person.lastname %></a></li>
       <% }) %>
