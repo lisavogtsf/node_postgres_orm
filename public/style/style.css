@@ -1,9 +1,9 @@
 h1 {
-  color: blue;
+  color: darkgray;
   text-align: center;
 }
 body {
-  background-color: lavender;
+  background-color: beige;
 }
 .nav {
   display: inline;

@@ -10,8 +10,11 @@ app.set("view engine", "ejs");
 // Middleware
 app.use(bodyParser.urlencoded());
 app.use(methodOverride("_method"));
+// CSS
+app.use(express.static(__dirname + '/public'));
+console.log(__dirname);
 
-// working, ugly
+// working
 // corresponds to Person.all, uses index.ejs
 // and shows all people
 app.get("/people", function(req, res){
@@ -20,6 +23,7 @@ app.get("/people", function(req, res){
   })
 });
 
+// working
 // Sort of corresponds to Person.create, 
 // uses new.ejs to display form for adding
 // someone to the database
@@ -27,6 +31,7 @@ app.get("/people/new", function(req, res){
   res.render("people/new")
 });
 
+// working
 // corresponds to Person.findBy, uses show.ejs
 // trouble with error handling when I look for 
 // a non-existant id
@@ -54,8 +59,23 @@ app.get("/people/:id/edit", function(req,res){
 // corresponds to People.create, uses new.ejs
 // this is the action of creating someone new
 app.post("/people", function(req, res){
+  console.log("req.body ", req.body);
+  console.log("firstname ", firstname);
+  console.log("lastname ", lastname);
+  var personToAdd = {firstname: firstname, lastname: lastname};
+
+  Person.create(personToAdd, function(err, newPerson){
+    console.log(newPerson);
+  })
+
   res.redirect("/people")
 });
+
+
+
+
+
+
 
 // corresponds to Person.prototype.delete
 // probably uses edit.ejs

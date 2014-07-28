@@ -2,15 +2,19 @@
 <html>
   <head>
     <title>New Person</title>
+    <link rel="stylesheet" type="text/css" href="../../style/style.css">
   </head>
   <body>
     <!-- Form to add a new person to the database -->
     <h1>Add a new person</h1>
 
     <form action="/people">
-      <input type="text" name="firstname" placeholder="First name">
-      <input type="text" name="lastname" placeholder="Last name">
-      <input type="submit">
+      <fieldset>
+        <legend>Enter a first and last name to make a new person</legend>
+        <input type="text" name="firstname" placeholder="First name">
+        <input type="text" name="lastname" placeholder="Last name">
+        <input type="submit">
+      </fieldset>
     </form>
 
     
