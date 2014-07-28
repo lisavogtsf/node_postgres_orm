@@ -1,16 +1,10 @@
 var db = require('./db');
 
 function Person(params) {
-  if(params){
-    this.firstname = params.firstname;
-    this.lastname = params.lastname;
-    this.id = params.id;
-  } else {
-    console.log("error making a new Person");
-    this.id =  "not in database"; 
-    this.firstname = "ERROR! ";
-    this.lastname = "Please try another ID."
-  }
+  this.firstname = params.firstname;
+  this.lastname = params.lastname;
+  this.id = params.id;
+  
 };
 
 // Person.all function--working
@@ -152,13 +146,17 @@ Person.prototype.update = function(params, callback) {
 // Wondering now if I need to do anything else to 
 // get the person out of allPeople... Will see.
 Person.prototype.destroy = function(callback){
-  db.query("DELETE FROM people WHERE id =$1;", [this.id], function(err, res) {
-    // console.log("err: ", err);
-    // console.log("res: ", res);
-    console.log("Running destroy function");
+  if(this instanceof Person == false){
+    console.log("Error! No person to delete");
+  } else {
+    db.query("DELETE FROM people WHERE id =$1;", [this.id], function(err, res) {
+      // console.log("err: ", err);
+      // console.log("res: ", res);
+      console.log("Running destroy function");
 
-    callback(err);
-  });
+      callback(err);
+    });
+  }
 }
 
 

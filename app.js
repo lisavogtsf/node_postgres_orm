@@ -80,7 +80,7 @@ app.delete("/people/:id", function(req, res){
     if(err) {
       console.error("Error!", err);
     } else {
-      person.delete(function(err, res){
+      person.destroy(function(err, res){
         console.log("deleted person?", person);
       });
       res.redirect("/people");
