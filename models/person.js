@@ -71,17 +71,26 @@ Person.findBy = function(key, val, callback) {
 // record in a res response.
 // Person.create then turns that object into a new Person object.
  // This newPerson object is available to be passed to an ejs template. 
+ // some error handling.
 Person.create = function(params, callback){
-  db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2);',
-    [params.firstname, params.lastname], 
-    function(err, res){
-      console.log("Running Person.create");
-      var createdRow, newPerson;
-      Person.findBy('firstname', params.firstname, function(err, newPerson){
-        // console.log(newPerson);
-        callback(err, newPerson);            
-      });
+  if (params.firstname == ""){
+    console.log("Error! No first name supplied.");
+  } else { 
+    db.query('INSERT INTO people (firstname, lastname) VALUES ($1, $2);',
+      [params.firstname, params.lastname], 
+      function(err, res){
+      if(err){
+        console.log("Error!", err)
+      } else {
+        console.log("Running Person.create");
+        var createdRow, newPerson;
+        Person.findBy('firstname', params.firstname, function(err, newPerson){
+          // console.log(newPerson); 
+        });
+      }
+      callback(err, newPerson);
     });
+  }
 };
 
 // Person.prototype.update--working

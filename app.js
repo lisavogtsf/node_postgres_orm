@@ -56,25 +56,17 @@ app.get("/people/:id/edit", function(req,res){
   res.render("people/edit", {person: {} });
 });
 
+// working
 // corresponds to People.create, uses new.ejs
 // this is the action of creating someone new
 app.post("/people", function(req, res){
-  console.log("req.body ", req.body);
-  console.log("firstname ", firstname);
-  console.log("lastname ", lastname);
-  var personToAdd = {firstname: firstname, lastname: lastname};
-
+  // console.log("req.body ", req.body);
+  var personToAdd = req.body;
   Person.create(personToAdd, function(err, newPerson){
     console.log(newPerson);
-  })
-
-  res.redirect("/people")
+  });
+  res.redirect("/people");
 });
-
-
-
-
-
 
 
 // corresponds to Person.prototype.delete
