@@ -71,9 +71,21 @@ app.post("/people", function(req, res){
 //
 // corresponds to Person.prototype.delete
 // probably uses edit.ejs
+// Plan to use FindBy as I did in previous
+// tests.  
 app.delete("/people/:id", function(req, res){
-  findBy
-  res.redirect("/people");
+  var deleteId = req.params.id;
+  Person.findBy('id', deleteId, function(err, person){
+    console.log(person);
+    if(err) {
+      console.error("Error!", err);
+    } else {
+      person.delete(function(err, res){
+        console.log("deleted person?", person);
+      });
+      res.redirect("/people");
+    }
+  });
 });
 
 // correponds to Person.prototype.update
@@ -81,7 +93,7 @@ app.delete("/people/:id", function(req, res){
 // database using form data from edit.ejs
 app.put("/people/:id", function(req,res){
   res.redirect("/people");
-})
+});
 
 app.listen(3000, function(){
   console.log("THE SERVER IS LISTENING ON localhost:3000");
