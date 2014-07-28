@@ -10,6 +10,12 @@
     <ul>
       <li><%= "ID: " + person.id + ", " + person.firstname + " " + person.lastname %></li>
     </ul>
+
+    <form method="get" action="/people/<%=person.id%>/edit">
+      <button>Edit this person</button>
+    </form>
+
+
     <form method="post" action="/people/<%=person.id%>?_method=delete">
       <button>Delete this person</button>
     </form>

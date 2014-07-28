@@ -14,10 +14,16 @@ app.use(methodOverride("_method"));
 app.use(express.static(__dirname + '/public'));
 console.log(__dirname);
 
+
+// app.get("/", function(req, res){
+//   res.redirect("people/index");
+// });
+
 // working
 // corresponds to Person.all, uses index.ejs
 // and shows all people
 app.get("/people", function(req, res){
+  console.log("app.get(/people---Person.all");
   Person.all(function(err, allPeople){
   res.render("people/index", {people: allPeople})
   })
@@ -36,6 +42,7 @@ app.get("/people/new", function(req, res){
 // trouble with error handling when I look for 
 // a non-existant id
 app.get("/people/:id", function(req,res){
+  console.log("app.get(/people/:id---findBy");
   var personId = req.params.id;
 
   Person.findBy('id', personId, function(err, person){
