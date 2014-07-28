@@ -68,10 +68,11 @@ app.post("/people", function(req, res){
   res.redirect("/people");
 });
 
-
+//
 // corresponds to Person.prototype.delete
 // probably uses edit.ejs
 app.delete("/people/:id", function(req, res){
+  findBy
   res.redirect("/people");
 });
 

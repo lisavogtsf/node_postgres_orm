@@ -1,11 +1,22 @@
-h1 {
-  color: darkgray;
-  text-align: center;
-}
 body {
-  background-color: beige;
+  background-color: teal;
+  font-family: helvetica;
+}
+h1 {
+  color: teal;
+  text-align: center;
+  background: beige;
+}
+ul {
+  background-color: lightgray;
 }
 .nav {
   display: inline;
   padding: 0px 10px 0px 10px;
+  background-color: teal;
+  font-weight: bold;
+}
+.nav li {
+  background: beige;
+  text-align: center;
 }
